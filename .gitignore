@@ -1,0 +1,21 @@
+# Local credentials and editor/runtime files
+.DS_Store
+node_modules/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+
+# Duplicate uploads, deployment snapshots and local references
+incoming/
+source-files/
+reference/
+deploy-backup/
+
+# TD projects, camera captures and diagnostics stay local
+# Keep readable integration sources and notes.
+td/*
+!td/*.py
+!td/README.md
+td/*.before*.py

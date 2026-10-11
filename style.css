@@ -1,0 +1,49 @@
+*{box-sizing:border-box}body{margin:0;background:#f6f3e9;color:#28251f;font-family:Arial,"Apple SD Gothic Neo",sans-serif}main{min-height:100svh;max-width:1200px;margin:auto;padding:64px 32px 30px}h1{font-size:clamp(50px,11vw,140px);font-weight:900;letter-spacing:-.075em;line-height:.9;margin:0 0 54px}form{display:flex;gap:16px;border-bottom:2px solid #28251f;padding-bottom:12px;max-width:800px}input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:24px;outline-offset:8px;color:inherit}button{cursor:pointer;font:inherit;border:0}#hate{background:#ff602c;color:#28251f;font-size:20px;font-weight:900;padding:16px 34px;border-radius:4px}#hate:disabled{opacity:.5}button:focus-visible,input:focus-visible{outline:3px solid #ff602c;outline-offset:5px}#stage{position:relative;height:52svh;min-height:260px;margin-top:28px;overflow:hidden}canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}#stage-text{position:absolute;inset:24px;display:flex;align-items:center;justify-content:center;text-align:center;overflow-wrap:anywhere;font-weight:900;letter-spacing:-.05em;line-height:1.15;margin:0;white-space:pre-wrap}#meme{position:absolute;inset:20px;align-items:center;justify-content:center;display:flex;font-size:150px;color:#ff602c}#meme[hidden],[hidden]{display:none!important}#bgm-toggle{position:fixed;bottom:24px;right:24px;border-radius:24px;min-width:96px;height:44px;padding:0 20px;background:#28251f;color:#f6f3e9;font-size:13px;font-weight:700;letter-spacing:.08em}#status{font-size:12px;color:#7d3821;max-width:700px;line-height:1.6} .result-explode{opacity:.3;text-decoration:line-through}.result-punch{transform:rotate(-7deg);text-decoration:line-through}.result-crack{text-shadow:2px 2px #ff602c;text-decoration:underline wavy;text-decoration-thickness:2px}.result-melt{transform:scaleY(.6);transform-origin:bottom;opacity:.5}@media(max-width:600px){main{padding:36px 20px}h1{margin-bottom:42px}input{font-size:20px}#hate{padding:14px 23px;font-size:17px}}
+
+#camera-preview{display:block;width:320px;max-width:100%;aspect-ratio:16/9;object-fit:contain;border-radius:8px;background:#28251f;margin-top:24px}
+
+main{display:flex;flex-direction:column;align-items:center;text-align:center}h1{width:100%;text-align:center}form{width:100%;margin-inline:auto}input{text-align:center}#camera-preview{margin:24px auto 0}#stage{width:100%;margin-inline:auto}#status{margin-inline:auto;text-align:center}
+
+/* Fire-colored pixel fragments animate behind the existing interface. */
+body{isolation:isolate;background:#000;color:#fff7ed}
+form{border-color:#fff7ed}
+#bgm-toggle{background:#fff7ed;color:#28251f}
+#status{color:#ffc0aa}
+main{position:relative;z-index:1}
+#burst-canvas{position:fixed;inset:0;width:100vw;height:100svh;z-index:0;pointer-events:none;image-rendering:pixelated}
+body[data-background="explosion"]{background:#060e11;color:#fff7ed}
+body:is([data-background="explosion"],[data-background="punch"]) h1{text-shadow:0 3px 18px #000}
+body:is([data-background="explosion"],[data-background="punch"]) form{border-color:#fff7ed;background:rgba(0,0,0,.38);padding:12px;border-radius:4px 4px 0 0}
+body:is([data-background="explosion"],[data-background="punch"]) #camera-preview{box-shadow:0 0 0 1px rgba(255,247,237,.5)}
+body:is([data-background="explosion"],[data-background="punch"]) #status{color:#fff7ed;background:rgba(0,0,0,.65)}
+body:is([data-background="explosion"],[data-background="punch"]) #bgm-toggle{background:#fff7ed;color:#28251f}
+
+/* Stylized Nintendo-era 3D game boxing ring fills the punch backdrop. */
+body[data-background="punch"]{background-color:#080c0d;background-image:linear-gradient(rgba(0,0,0,.24),rgba(0,0,0,.5)),url("assets/boxing-ring-game.png");background-position:center;background-size:cover;background-repeat:no-repeat;background-attachment:fixed;color:#fff7ed}
+body[data-background="punch"] #stage-text{text-shadow:0 2px 12px rgba(0,0,0,.7)}
+
+/* Two-hand heart: soft blue sky, luminous white text, falling white glitter. */
+body[data-background="heart"]{background:#439add;background-image:linear-gradient(145deg,#3b97d8 0%,#62afe3 55%,#2587ce 100%);color:#fff}
+body[data-background="heart"]::before{content:"";position:fixed;inset:-6%;z-index:-1;pointer-events:none;filter:blur(17px);opacity:.85;background:radial-gradient(ellipse 7% 13% at 44% 44%,#fff 30%,transparent 80%),radial-gradient(ellipse 9% 12% at 47% 52%,#fff 25%,transparent 80%),radial-gradient(ellipse 8% 15% at 41% 59%,#fff 25%,transparent 78%),radial-gradient(ellipse 6% 11% at 37% 66%,#fff 25%,transparent 78%),radial-gradient(ellipse 5% 9% at 70% 3%,#fff 20%,transparent 75%),radial-gradient(ellipse 9% 5% at 85% 82%,rgba(255,255,255,.45),transparent 80%)}
+body[data-background="heart"]::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='white' filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E")}
+body[data-background="heart"] #burst-canvas{image-rendering:auto}
+body[data-background="heart"] h1{text-shadow:0 2px 18px rgba(23,91,151,.25)}
+body[data-background="heart"] form{border-color:rgba(255,255,255,.9);background:rgba(48,123,183,.12);padding:12px;border-radius:4px 4px 0 0}
+body[data-background="heart"] #camera-preview{box-shadow:0 0 0 1px rgba(255,255,255,.65),0 8px 30px rgba(15,73,122,.15)}
+body[data-background="heart"] #stage-text{text-shadow:0 0 10px #fff,0 0 34px #fff}
+body[data-background="heart"] #bgm-toggle{background:#fff;color:#257bb9}
+body[data-background="heart"] #status{color:#fff;background:rgba(20,82,137,.5)}
+
+/* Thumbs-up: the supplied meme behind green letters flowing into a puddle. */
+body[data-background="melt"]{background:#fff;color:#32c91c}
+body[data-background="melt"]::before{content:"";position:fixed;inset:var(--hate-bar-height,0px) 0 0;z-index:-1;pointer-events:none;background:#fff url("assets/thumbs-up-meme.jpg") center/contain no-repeat}
+body[data-background="melt"] #stage-text{color:#32c91c;text-shadow:0 1px 3px #15480d}
+body[data-background="melt"] #game #gesture-label{text-shadow:0 1px 3px #fff,0 0 6px #fff}
+body[data-background="melt"] #game #bgm-toggle{color:#22720e}
+
+/* Thumbs-down: the supplied meme behind diagonal showers of the entered text. */
+body[data-background="rain"]{background:#fff;color:#16200b}
+body[data-background="rain"]::before{content:"";position:fixed;inset:var(--hate-bar-height,0px) 0 0;z-index:-1;pointer-events:none;background:#fff url("assets/thumbs-down-meme.jpg") center/contain no-repeat}
+body[data-background="rain"] #stage-text{color:#16200b}
+body[data-background="rain"] #game #gesture-label{text-shadow:0 1px 3px #fff,0 0 6px #fff}
+body[data-background="rain"] #game #bgm-toggle{color:#16200b}

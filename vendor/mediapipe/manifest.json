@@ -1,0 +1,37 @@
+{
+  "package": "@mediapipe/tasks-vision",
+  "version": "1.1.0",
+  "integrity": "sha512-ZJqh0wMKOINorfSffvDAxzyO1//c+FiG3IkzOdNDnLqvBB3DbMfj0bB/tys2SNf9S914sgoIbIpF4HTOi336cg==",
+  "model": "https://storage.googleapis.com/mediapipe-models/gesture_recognizer/gesture_recognizer/float16/1/gesture_recognizer.task",
+  "modelSha256": "97952348cf6a6a4915c2ea1496b4b37ebabc50cbbf80571435643c455f2b0482",
+  "files": {
+    "vendor/mediapipe/vision_bundle.mjs": {
+      "bytes": 156135,
+      "sha256": "9d5fc9ef74b22329cf9aa88dc543956d192b8c254210b187271614713eb5b10c"
+    },
+    "vendor/mediapipe/wasm/vision_wasm_internal.js": {
+      "bytes": 335393,
+      "sha256": "7c652617b5bef832f42878ce8c5f752b0724bca6054e4bc1013a37d4b1949723"
+    },
+    "vendor/mediapipe/wasm/vision_wasm_internal.wasm": {
+      "bytes": 12997248,
+      "sha256": "782eda3ec1f414fdb4f1d66a8b59093eb4d5ab437e06117796abf05962d68eef"
+    },
+    "vendor/mediapipe/wasm/vision_wasm_module_internal.js": {
+      "bytes": 335431,
+      "sha256": "70eff3956521b7de058d7173a4935c95e4a223c26ea624b9f5a936d3a043dcb0"
+    },
+    "vendor/mediapipe/wasm/vision_wasm_module_internal.wasm": {
+      "bytes": 12997272,
+      "sha256": "ee03b14a878e6c3c053a1bfa62e166dc45244be54dc0bbe61c578f710b771f6a"
+    },
+    "vendor/mediapipe/wasm/vision_wasm_nosimd_internal.js": {
+      "bytes": 335196,
+      "sha256": "510fc70a170eb8b46767a7abab2af89a7a8341fa5b3ebfb8a5de41a79b7fa9df"
+    },
+    "vendor/mediapipe/wasm/vision_wasm_nosimd_internal.wasm": {
+      "bytes": 12168316,
+      "sha256": "b802041d105876865d6a0806f2ff7c4419a7f1b80bc01340fe36e759c2030011"
+    }
+  }
+}

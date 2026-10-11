@@ -1,0 +1,128 @@
+/* The supplied full-page JPGs stay intact; the frame reveals only each photo. */
+body[data-view="intro"] {
+  background: #8dce00;
+  color: #fff;
+  overflow: hidden;
+}
+
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  min-height: 100svh;
+  margin: 0;
+  padding: 0;
+  background: #8dce00;
+  color: #fff;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+#intro .intro-title {
+  position: absolute;
+  top: 27.2svh;
+  left: 50%;
+  width: auto;
+  margin: 0;
+  transform: translateX(-50%);
+  font-size: clamp(28px, 2.07vw, 52px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 0;
+  white-space: nowrap;
+  text-align: center;
+  text-shadow: none;
+}
+
+#intro #enter-site {
+  position: absolute;
+  top: 33.465svh;
+  left: 50%;
+  width: 38.776vw;
+  max-width: 76svh;
+  aspect-ratio: 3130 / 1563;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: #8dce00;
+  transform: translateX(-50%);
+  line-height: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#intro #enter-site:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 8px;
+}
+
+#intro .intro-photo {
+  position: absolute;
+  left: -78.945687%;
+  top: -97.888676%;
+  width: 257.891374%;
+  height: 292.514395%;
+  max-width: none;
+  display: block;
+  object-fit: fill;
+  pointer-events: none;
+  user-select: none;
+}
+
+#intro .intro-photo-hover {
+  /* The second mockup's photograph is nine source pixels shorter. */
+  top: -98.455598%;
+  height: 294.208494%;
+  opacity: 0;
+}
+
+#intro #enter-site:is(:hover, :focus-visible) .intro-photo-default {
+  opacity: 0;
+}
+
+#intro #enter-site:is(:hover, :focus-visible) .intro-photo-hover {
+  opacity: 1;
+}
+
+#intro #intro-music-toggle {
+  position: absolute;
+  right: 4.1vw;
+  bottom: 4.05svh;
+  margin: 0;
+  padding: 8px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  font-family: inherit;
+  font-size: clamp(18px, 1.25vw, 28px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  cursor: pointer;
+}
+
+#intro #intro-music-toggle:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  #intro .intro-title {
+    top: 27svh;
+    font-size: 29px;
+  }
+
+  #intro #enter-site {
+    top: 34svh;
+    width: 86vw;
+  }
+
+  #intro #intro-music-toggle {
+    right: 5vw;
+    bottom: max(4svh, env(safe-area-inset-bottom));
+    font-size: 20px;
+  }
+}

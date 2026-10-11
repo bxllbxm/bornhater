@@ -1,0 +1,10 @@
+
+# BORN HATER browser tracking types
+AddType application/javascript .mjs
+AddType application/wasm .wasm
+AddType application/octet-stream .task
+
+# This entry page is static HTML; serve it without the inherited PHP handler.
+<Files "index.html">
+    SetHandler default-handler
+</Files>

@@ -1,0 +1,239 @@
+/* The interaction view follows bornhater-03 while retaining the effect layers. */
+body[data-view="game"] {
+  --hate-green: #8dce00;
+  --hate-bar-height: 10.69svh;
+  overflow: hidden;
+}
+
+#game {
+  position: fixed;
+  inset: 0;
+  display: block;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  height: 100svh;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-family: "Helvetica Neue", Arial, "Apple SD Gothic Neo", sans-serif;
+  text-align: left;
+}
+
+#game #hate-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: var(--hate-bar-height);
+  background: var(--hate-green);
+}
+
+#game #text-form {
+  position: absolute;
+  left: 30.4vw;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 1.72vw;
+  width: 46.1vw;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+}
+
+#game #hate-label {
+  flex: none;
+  font-size: clamp(24px, 2.07vw, 52px);
+  font-weight: 300;
+  line-height: 1.1;
+  white-space: nowrap;
+  -webkit-text-stroke: .45px rgba(0, 0, 0, .75);
+}
+
+#game #text-input {
+  flex: 1;
+  width: 0;
+  min-width: 0;
+  height: 1.55em;
+  margin: 0;
+  padding: .16em 0 .06em;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .65);
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  font-family: inherit;
+  font-size: clamp(24px, 2.07vw, 52px);
+  font-weight: 300;
+  line-height: 1.1;
+  text-align: left;
+  caret-color: #fff;
+}
+
+#game #text-input:focus-visible {
+  outline: none;
+  border-bottom-color: #fff;
+  box-shadow: 0 1px 0 #fff;
+}
+
+#game #stage {
+  position: absolute;
+  inset: var(--hate-bar-height) 0 0;
+  width: 100%;
+  height: calc(100svh - var(--hate-bar-height));
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+#game #tracking-panel {
+  position: absolute;
+  left: 1.32vw;
+  bottom: max(2.24svh, env(safe-area-inset-bottom));
+  z-index: 4;
+  width: 27.35vw;
+  margin: 0;
+  padding: 0;
+  color: var(--hate-green);
+}
+
+#game #gesture-label {
+  min-height: 1.1em;
+  margin: 0 0 .6em;
+  color: var(--hate-green);
+  font-size: clamp(16px, 1.37vw, 28px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+#game #camera-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 28 / 17;
+  overflow: hidden;
+  border: 1px solid var(--hate-green);
+  border-radius: 0;
+  background: #000;
+}
+
+#game #camera-preview {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  aspect-ratio: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: #000;
+  object-fit: contain;
+  box-shadow: none;
+  transform: scaleX(-1);
+}
+
+#game #camera-overlay {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  transform: scaleX(-1);
+}
+
+#game #bgm-toggle {
+  position: absolute;
+  right: 4.1vw;
+  bottom: 4.05svh;
+  z-index: 5;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  margin: 0;
+  padding: 8px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  font-family: inherit;
+  font-size: clamp(18px, 1.25vw, 28px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: lowercase;
+}
+
+#game #bgm-toggle:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+#game #status {
+  position: absolute;
+  top: calc(var(--hate-bar-height) + 12px);
+  left: 50%;
+  z-index: 4;
+  width: min(90vw, 700px);
+  max-width: none;
+  margin: 0;
+  padding: 6px 12px;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, .65);
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* Keep the official player's picture and controls visible below the input. */
+#video-background {position:absolute;inset:0;z-index:0;background:#000;min-height:200px;}
+#video-background video {display:block;width:100%;height:100%;border:0;object-fit:contain;}
+body[data-background="video"] {background:#000;color:#fff;}
+body[data-background="video"] #game #canvas,
+body[data-background="video"] #game #stage-text {visibility:hidden;pointer-events:none;}
+body[data-background="video"] #burst-canvas {visibility:hidden;}
+body[data-background="video"] #game #tracking-panel {bottom:max(85px,env(safe-area-inset-bottom));}
+body[data-background="video"] #game #bgm-toggle {bottom:max(85px,env(safe-area-inset-bottom));text-shadow:0 1px 5px #000;}
+
+@media (max-width: 700px) {
+  body[data-view="game"] {
+    --hate-bar-height: max(10.69svh, 72px);
+  }
+
+  #game #text-form {
+    left: 6vw;
+    width: 88vw;
+    gap: 5vw;
+  }
+
+  #game #hate-label,
+  #game #text-input {
+    font-size: 27px;
+  }
+
+  #game #tracking-panel {
+    left: 4vw;
+    bottom: max(3svh, env(safe-area-inset-bottom));
+    width: min(42vw, 240px);
+  }
+
+  #game #gesture-label {
+    font-size: 16px;
+  }
+
+  #game #bgm-toggle {
+    right: 5vw;
+    bottom: max(4svh, env(safe-area-inset-bottom));
+    font-size: 20px;
+  }
+}
